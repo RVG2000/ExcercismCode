@@ -13,12 +13,12 @@ public class Robot {
 	private String name;
 
 	public String getName() {
-		if (usedNames.size() >= MAX_NO_NAME) {
-			throw new InvalidRobotNameException(
-					"All the robot names have used for the 5 letter naming convention. Please initialize robot again");
-		}
 		if (name == null) {
 			do {
+				if (usedNames.size() >= MAX_NO_NAME) {
+					throw new InvalidRobotNameException(
+							"All the robot names have used for the 5 letter naming convention. Please initialize robot again");
+				}
 				name = generateName();
 			} while (usedNames.contains(name));
 			usedNames.add(name);
